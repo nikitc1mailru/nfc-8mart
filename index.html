@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DATE</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* АНИМАЦИЯ ВЫЕЗДА */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.6s ease forwards;
+}
+
+.fade-up:nth-child(1) { animation-delay: 0.1s; }
+.fade-up:nth-child(2) { animation-delay: 0.2s; }
+.fade-up:nth-child(3) { animation-delay: 0.3s; }
+.fade-up:nth-child(4) { animation-delay: 0.4s; }
+.fade-up:nth-child(5) { animation-delay: 0.5s; }
+.fade-up:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 420px;
+    display: grid;
+    gap: 8px;
+}
+
+.card {
+    border-radius: 30px;
+    padding: 24px;
+}
+
+.red {
+    background: #620000;
+    color: #fff5e6;
+}
+
+.beige {
+    background: #e8dfcf;
+    color: #000;
+}
+
+.big-title {
+    font-size: 34px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.small-text {
+    font-size: 16px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* БЕЛАЯ КНОПКА */
+.button {
+    margin-top: 10px;
+    background: #e8dfcf;
+    color: #000;
+    text-align: center;
+    padding: 18px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    transition: 0.2s ease;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    line-height: 1.2;
+}
+
+/* Убираем лишние отступы у кнопки */
+button.button {
+    margin: 0;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Убираем лишние отступы у ссылки */
+a.button {
+    margin: 0;
+}
+
+.button:active {
+    transform: scale(0.97);
+}
+
+/* АНИМАЦИЯ МАШИНЫ */
+.car {
+    position:absolute;
+    bottom:0;
+    right:-20px;
+    width:220px;
+    z-index:1;
+    opacity:0;
+    transform: translateX(20px);
+    animation: carIn 0.8s ease forwards;
+    animation-delay: 0.6s;
+}
+
+.chulki {
+    position:absolute;
+    bottom:10px;
+    left:10px;
+    width:100px;
+    z-index:1;
+}
+
+.trusy {
+    position:absolute;
+    top:80px;
+    left:100px;
+    width:70px;
+    z-index:1;
+}
+
+.poyas {
+    position:absolute;
+    top:140px;
+    left:160px;
+    width:90px;
+    z-index:1;
+}
+
+.lif {
+    position:absolute;
+    top:60px;
+    right:90px;
+    width:90px;
+    z-index:1;
+}
+
+.prob {
+    position:absolute;
+    top:150px;
+    right:30px;
+    width:90px;
+    z-index:1;
+}
+
+@keyframes carIn {
+    to {
+        opacity:1;
+        transform: translateX(0);
+    }
+}
+
+/* СТИЛЬ ДЛЯ НОВОГО БЛОКА */
+.style-text {
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.style-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card red fade-up">
+        <div class="big-title">GREEN MOOD<br>Желтый барн</div>
+        <div class="row small-text" style="margin-top: 20px;">
+            <div>Адрес:<br>Озёрный пер. 83</div>
+            <div>Время:<br>15:00</div>
+        </div>
+    </div>
+
+    <div class="row fade-up" style="gap:8px;">
+        <div class="card red" style="flex:1;">
+            <div class="big-title">7 MAR</div>
+            <div class="small-text">Суббота</div>
+        </div>
+
+        <div class="card beige" style="flex:1;">
+            <div class="big-title">DATE</div>
+            <div class="small-text">Приглашение<br>на свидание</div>
+        </div>
+    </div>
+
+    <div class="card red fade-up" style="position:relative; overflow:hidden;">
+        <div style="position:relative; z-index:2;">
+            <div style="font-size:26px; font-weight:bold;">
+                Заберёт Никита<br>в 14:00
+            </div>
+            <div style="margin-top:15px;">
+                Стоимость: оплачено
+            </div>
+        </div>
+
+        <img src="images/car.png"
+             class="car"
+             loading="eager"
+             decoding="async">
+    </div>
+
+    <!-- НОВЫЙ БЛОК: Стиль одежды -->
+<div class="card beige fade-up" style="overflow: hidden;">
+    <div class="big-title" style="font-size: 32px; margin-bottom: 8px; cursor: pointer;" onclick="toggleClothingStyle()">
+        Стиль одежды <span id="toggle-icon">▾</span>
+    </div>
+    <div id="clothing-style-content" style="display: none; margin-top: 16px;">
+        <img src="images/chulki.png" class="chulki">
+        <img src="images/trusy.png" class="trusy">
+        <img src="images/poyas.png" class="poyas">
+        <img src="images/lif.png" class="lif">
+        <img src="images/prob.png" class="prob">
+    </div>
+</div>
+
+    <!-- ===== КНОПКА "ДОБАВИТЬ В КАЛЕНДАРЬ" ===== -->
+    <a class="button fade-up" onclick="downloadICS()" style="margin-top: 0;">
+        Добавить в календарь
+    </a>
+
+</div>
+
+<script>
+function downloadICS() {
+
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+    if (isIOS) {
+        const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:Свидание 💕
+DTSTART:20260307T200000+0500
+DTEND:20260308T170000+0500
+DESCRIPTION:Green mood. Желтый барн. Никита заберёт в 14:00.
+LOCATION:Озёрный пер. 83
+END:VEVENT
+END:VCALENDAR`;
+
+        const blob = new Blob([icsContent], { type: 'text/calendar' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'date.ics';
+        link.click();
+    } else {
+        window.open(
+            "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+            "&text=Свидание" +
+            "&dates=20260307T150000Z/20260308T120000Z!" +
+            "&details=Green mood. Желтый барн. Никита заберёт в 14:00." +
+            "&location=Озёрный пер. 83" +
+            "&ctz=Asia/Yekaterinburg"
+        );
+    }
+}
+
+function toggleClothingStyle() {
+    const content = document.getElementById('clothing-style-content');
+    const icon = document.getElementById('toggle-icon');
+
+    if (content.style.display === 'none' || content.style.display === '') {
+        content.style.display = 'block';
+        content.style.height = '150px';
+        icon.textContent = '▴'; // стрелка вверх (раскрыто)
+    } else {
+        content.style.display = 'none';
+        icon.textContent = '▾'; // стрелка вниз (спрятано)
+    }
+}
+
+</script>
+
+</body>
+</html>
