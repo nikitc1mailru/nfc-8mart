@@ -115,11 +115,11 @@ a.button {
 .car {
     position:absolute;
     bottom:0;
-    right:-20px;
+    right:-40px;
     width:220px;
     z-index:1;
     opacity:0;
-    transform: translateX(20px);
+    transform: translateX(40px);
     animation: carIn 0.8s ease forwards;
     animation-delay: 0.6s;
 }
@@ -143,7 +143,7 @@ a.button {
 .poyas {
     position:absolute;
     top:140px;
-    left:160px;
+    left:130px;
     width:90px;
     z-index:1;
 }
@@ -256,18 +256,24 @@ function downloadICS() {
 VERSION:2.0
 BEGIN:VEVENT
 SUMMARY:Свидание 💕
-DTSTART:20260307T200000+0500
-DTEND:20260308T170000+0500
+DTSTART:20260307T200000Z
+DTEND:20260308T170000Z
 DESCRIPTION:Green mood. Желтый барн. Никита заберёт в 14:00.
 LOCATION:Озёрный пер. 83
 END:VEVENT
 END:VCALENDAR`;
 
-        const blob = new Blob([icsContent], { type: 'text/calendar' });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = 'date.ics';
-        link.click();
+        const blob = new Blob([icsContent], { type: 'text/vcalendar' });
+        const button = document.createElement('button');
+        button.textContent = 'Добавить в календарь';
+        button.onclick = () => {
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'date.ics';
+            link.click();
+            URL.revokeObjectURL(url); // Очищаем URL
+        };
+        document.body.appendChild(button);
     } else {
         window.open(
             "https://calendar.google.com/calendar/render?action=TEMPLATE" +
